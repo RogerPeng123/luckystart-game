@@ -1,5 +1,7 @@
 package com.luckystar.panel;
 
+import com.luckystar.utils.SystemUtil;
+
 import javax.imageio.ImageIO;
 import java.awt.*;
 import java.awt.event.MouseAdapter;
@@ -70,7 +72,16 @@ public class Pool extends JPanel {
         g.setColor(Color.YELLOW);
         g.drawString("SCORE:", 10, 20);
         g.setColor(Color.MAGENTA);
-        g.drawString("      " + score, 10, 20);
+
+        /**
+         * win和mac系统对于初始化点的兼容处理
+         */
+        if (SystemUtil.isWindows()) {
+            g.drawString("      " + score, 10, 20);
+        } else {
+            g.drawString("      " + score, 40, 20);
+        }
+
     }
 
     /**
